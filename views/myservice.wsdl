@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://icheck.webservice.hime.com" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope" xmlns:soapenc11="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap11="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tns="http://icheck.webservice.hime.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soapenc12="http://www.w3.org/2003/05/soap-encoding">
+  <wsdl:types>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://icheck.webservice.hime.com">
+<xsd:element name="id_check">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="xml" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="value1" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="value2" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="value3" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="id_checkResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+</xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="id_checkResponse">
+    <wsdl:part name="parameters" element="tns:id_checkResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="id_checkRequest">
+    <wsdl:part name="parameters" element="tns:id_check">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="IidentifictTwoCheckWSDLPortType">
+    <wsdl:operation name="id_check">
+      <wsdl:input name="id_checkRequest" message="tns:id_checkRequest">
+    </wsdl:input>
+      <wsdl:output name="id_checkResponse" message="tns:id_checkResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="IidentifictTwoCheckWSDLHttpBinding" type="tns:IidentifictTwoCheckWSDLPortType">
+    <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="id_check">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="id_checkRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="id_checkResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="IidentifictTwoCheckWSDL">
+    <wsdl:port name="IidentifictTwoCheckWSDLHttpPort" binding="tns:IidentifictTwoCheckWSDLHttpBinding">
+      <wsdlsoap:address location="http://158.222.65.88/edmssub/services/IidentifictTwoCheckWSDL"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
